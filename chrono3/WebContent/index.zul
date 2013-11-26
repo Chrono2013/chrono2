@@ -1,5 +1,6 @@
 <?page title="Auto Generated index.zul"?>
 
+<<<<<<< HEAD
 	
 <zk xmlns:c="client">
     <style src="/widgets/grid/inline_editing/style.css" />
@@ -43,3 +44,7 @@
         </grid>
     </div>
 </zk>
+=======
+<label value="You are using: ${desktop.webApp.version}"/>
+</window>
+>>>>>>> branch 'master' of https://github.com/Chrono2013/chrono2.git
