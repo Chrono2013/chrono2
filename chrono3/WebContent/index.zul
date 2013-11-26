@@ -1,45 +1,89 @@
-<?page title="Auto Generated index.zul"?>
-<zk xmlns:c="client">
-    <style src="/widgets/grid/inline_editing/style.css" />
-    <div apply="org.zkoss.bind.BindComposer"
-        viewModel="@id('vm') @init('chrono3.InlineEditingViewModel')">
-        <grid width="700px" model="@load(vm.allBooks)">
-            <columns height="22px">
-                <column width="330px" label="Title">
-                    <image
-                        src="/widgets/grid/inline_editing/img/ui-text-field.png" />
-                </column>
-                <column width="120px" label="Publish Date"
-                    align="center">
-                    <image
-                        src="/widgets/grid/inline_editing/img/calendar-blue.png" />
-                </column>
-                <column width="150px" label="Hardcover" align="center" />
-                <column width="100px" label="Status" align="center">
-                    <image
-                        src="/widgets/grid/inline_editing/img/ui-combo-box-edit.png" />
-                </column>
-            </columns>
-            <template name="model">
-                <row>
-                    <textbox inplace="true"
-                        value="@bind(each.title)" width="99%" />
-                    <datebox inplace="true"
-                        value="@bind(each.publish)" width="99%" format="MM/dd/yyyy" />
-                    <div class='text-center'>
-                        <spinner inplace="true"
-                            value="@bind(each.pages)" width="98%"/>
-                    </div>
-                    <combobox inplace="true"
-                        model="@load(vm.allStatuses)" selectedItem="@bind(each.status)" hflex="1" >
-                        <template name="model">
-                            <comboitem label="@load(each)" />
-                        </template>
-                    </combobox>
-                </row>
-            </template>
-        </grid>
-    </div>
-</zk>
 
+
+<zk xmlns:n="native">
+
+
+<window  apply="ctl.MainController" height="100%">
+
+    <menubar height="30px">
+<menuitem iconSclass="icon icon-white icon-user" label="Evenements" />
+<menu iconSclass="icon icon-white icon-envelope" label="Courses">
+
+</menu>
+<menuitem iconSclass="icon icon-white icon-cog" label="Voiture" />
+
+</menubar>
+
+ <groupbox width="80%" height="60px" >
+                <caption>
+                    
+                    Course suivie
+                </caption>
+               <combobox id="cmbEvenementSuivi" width="150px"  readonly="true" >
+               
+                   
+                </combobox>
+                <combobox id="cmbCourseSuivie" width="150px"   readonly="true">
+                   
+                </combobox>
+                <combobox id="cmbVoiture" width="150px"  readonly="true" >
+                   
+                </combobox>
+                <button label="Départ Course" id="btnDepartCourse" onClick="restart()" />
+            <label id="now" sclass="time" />
+               <label id="heure" sclass="time" />
+            </groupbox>
+            
+
+<zscript>
+    long countNum = 0;
+
+   
+    void restart() {
+    
+        timer.start();
+    }
+</zscript>
+         
+    <timer id="timer" delay="1" repeats="true" running="false" >
+        <attribute name="onTimer">
+        countNum++;
+    now.setValue("Temps écoulé ：" + String.valueOf(countNum));
+  
+</attribute>
+    </timer>
+     <timer id="timer2" delay="1000" repeats="true"  >
+        <attribute name="onTimer">
+        countNum++;
+    heure.setValue("Time ：" + new Date().toString());
+  
+</attribute>
+    </timer>
+    
+    
+     <borderlayout height="100%" id="bl" width="100%"  >
+            <west  size="25%" flex="true" maxsize="250"  >
+             trt
+            </west>
+           
+            <east  border="none" size="75%" flex="true">
+            	
+
+                
+                        
+                         <window id="win" border="normal" height="100%" width="100%" minheight="350"  >
+         <include src="grid.zul"/>
+          
+        </window>
+                
+    
+ 
+        
+            </east>
+        </borderlayout>
+    
+    
 </window>
+    
+    
+</zk>
