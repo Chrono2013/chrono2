@@ -7,7 +7,7 @@ import BO.EvenementSportif;
 
 public class eventViewModel {
 
-	private ArrayList<EvenementSportif> events = new ArrayList<EvenementSportif>();
+	public ArrayList<EvenementSportif> events = new ArrayList<EvenementSportif>();
 	
 	/*public list<EvenementSportif> getAllEvents(){
 		return event.getAllEvents();

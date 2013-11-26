@@ -3,12 +3,12 @@
 
 	<div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vm') @init('ViewModel.eventViewModel')">
-		<grid hflex="min" model="@load(vm.events)">
+		<grid hflex="min" model="@load(vm)">
 		
 		            <columns height="22px">
 		                <column width="120px" label="Nom" align="center"></column>
 		                <column width="120px" label="Nom du circuit" align="center"></column>
-		                <column width="120px" label="Longueur du circuit" align="center" /></column>
+		                <column width="120px" label="Longueur du circuit" align="center" ></column>
 		            </columns>
 		            
 		            <template name="model">
