@@ -41,21 +41,5 @@
         </grid>
     </div>
 </zk>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
+
 </window>
