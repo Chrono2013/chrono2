@@ -1,0 +1,27 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vm') @init('eventViewModel')">
+		<grid hflex="min" model="@load(vm.events)">
+		
+		            <columns height="22px">
+		                <column width="120px" label="Nom" align="center"></column>
+		                <column width="120px" label="Nom du circuit" align="center"></column>
+		                <column width="150px" label="Longueur du circuit" align="center" /></column>
+		            </columns>
+		            
+		            <template name="model">
+		                <row>
+		                    <textbox inplace="true"
+		                        value="@bind(each.nom)" width="99%" />
+		                    <textbox inplace="true"
+		                        value="@bind(each.nomCircuit)" width="99%" />
+							<textbox inplace="true"
+		                        value="@bind(each.longueurCircuit)" width="99%" />
+		                </row>
+		            </template>
+		        </grid>
+	</div>
+
+</zk>
