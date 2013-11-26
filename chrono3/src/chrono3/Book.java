@@ -13,7 +13,8 @@ public class Book {
         this.title = title;
         this.publish = publish;
         this.pages = pages;
-        this.status = status;System.out.println("1");
+        this.status = status;
+        System.out.println("1");
     }
  
     public String getAuthor() {
