@@ -2,7 +2,7 @@
 <zk>
 
 	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vm') @init('ViewModel.eventViewModel')">
+	        viewModel="@id('vm') @init('Ctl.gererEvenementCtlMVVM')">
 		<grid hflex="min" model="@load(vm)">
 		
 		            <columns height="22px">
