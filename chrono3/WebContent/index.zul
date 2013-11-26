@@ -3,7 +3,7 @@
 <zk xmlns:n="native">
 
 
-<window  apply="ctl.MainController" height="100%">
+<window  apply="Ctl.mainCtl" height="100%">
 
     <menubar height="30px">
 <menuitem iconSclass="icon icon-white icon-user" label="Evenements" />
