@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import BO.EvenementSportif;
 
-public class gererEvenementCtlMVVM {
+public class GererEvenementCtlMVVM {
 
 	public ArrayList<EvenementSportif> events = new ArrayList<EvenementSportif>();
 	

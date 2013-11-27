@@ -13,7 +13,7 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Timer;
 import org.zkoss.zul.Window;
 
-public class mainCtl extends SelectorComposer<Component>{
+public class MainCtlMVC extends SelectorComposer<Component>{
 /**
 * 
 */
