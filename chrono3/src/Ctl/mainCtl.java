@@ -1,5 +1,6 @@
 package Ctl;
 
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,5 +47,8 @@ e.printStackTrace();
 
 
 
+=======
+public class mainCtl {
+>>>>>>> branch 'master' of https://github.com/Chrono2013/chrono2.git
 
 }
