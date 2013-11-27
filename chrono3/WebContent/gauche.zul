@@ -1,0 +1,30 @@
+
+  <div  hflex="1" >
+     <groupbox width="100%" id="groupVoitureAutre"  >
+                <caption>
+                    
+                    Voiture principale
+                </caption>
+                
+                <button id="top" Label="TOP"></button>
+                <label value="Temps au top :" />
+                <button id="topin" Label="TOP IN Stand"></button>
+                 <label value="Chrono moyen :" />
+                </groupbox>
+                
+                  <groupbox width="100%" id="groupVoiturePrincipale"  >
+                <caption>
+                    
+                   Voiture autre
+                </caption>
+                
+                <button id="top1" Label="TOP"></button>
+                <label value="Temps au top :" />
+                <button id="topin2" Label="TOP IN Stand" onClick="timer3.start()"></button>
+                 <label value="Chrono moyen :" />
+                  <progressmeter id="pm" value="0" width="300px" />
+                </groupbox>
+                
+                
+</div>
+
