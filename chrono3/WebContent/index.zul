@@ -1,61 +1,27 @@
-<?page title="Auto Generated index.zul"?>
-<zk xmlns:c="client">
-    <style src="/widgets/grid/inline_editing/style.css" />
-    <div apply="org.zkoss.bind.BindComposer"
-        viewModel="@id('vm') @init('chrono3.InlineEditingViewModel')">
-        <grid width="700px" model="@load(vm.allBooks)">
-            <columns height="22px">
-                <column width="330px" label="Title">
-                    <image
-                        src="/widgets/grid/inline_editing/img/ui-text-field.png" />
-                </column>
-                <column width="120px" label="Publish Date"
-                    align="center">
-                    <image
-                        src="/widgets/grid/inline_editing/img/calendar-blue.png" />
-                </column>
-                <column width="150px" label="Hardcover" align="center" />
-                <column width="100px" label="Status" align="center">
-                    <image
-                        src="/widgets/grid/inline_editing/img/ui-combo-box-edit.png" />
-                </column>
-            </columns>
-            <template name="model">
-                <row>
-                    <textbox inplace="true"
-                        value="@bind(each.title)" width="99%" />
-                    <datebox inplace="true"
-                        value="@bind(each.publish)" width="99%" format="MM/dd/yyyy" />
-                    <div class='text-center'>
-                        <spinner inplace="true"
-                            value="@bind(each.pages)" width="98%"/>
-                    </div>
-                    <combobox inplace="true"
-                        model="@load(vm.allStatuses)" selectedItem="@bind(each.status)" hflex="1" >
-                        <template name="model">
-                            <comboitem label="@load(each)" />
-                        </template>
-                    </combobox>
-                </row>
-            </template>
-        </grid>
-    </div>
+
+
+<zk xmlns:n="native">
+
+
+<window  apply="Ctl.MainCtlMVC" height="100%" width="100%" >
+<borderlayout  id="tt" width="100%" height="100%" >
+			<north size="180px">
+				<div>
+				
+					<include src="menu.zul"  height="40px"/>
+					<include src="selection.zul" height="120px" />
+				</div>
+			</north>
+			 <west  size="25%" flex="true" maxsize="250"  border="normal" style="background:#B8D335">
+	        	<div  height="100%"   >
+	            	<include src="gauche.zul" />
+	            </div>  
+			</west>
+			<east  border="none" size="75%" flex="true">
+				<include src="droite.zul" />
+   		    </east>
+</borderlayout>
+</window>
+    
+    
 </zk>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>
-<label value="You are using: ${desktop.webApp.version}"/>
-</window>

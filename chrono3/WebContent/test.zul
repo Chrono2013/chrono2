@@ -3,8 +3,13 @@
 <div apply="Ctl.gererCtlMVC">
 
 	<div apply="org.zkoss.bind.BindComposer"
+<<<<<<< HEAD
 	        viewModel="@id('vm') @init('Ctl.gererEvenementCtlMVVM')">
 		<grid hflex="min" model="@load(vm.events)" id="eventGrid">
+=======
+	        viewModel="@id('vm') @init('Ctl.GererEvenementCtlMVVM')">
+		<grid hflex="min" model="@load(vm)">
+>>>>>>> branch 'master' of https://github.com/Chrono2013/chrono2.git
 		
 		            <columns height="22px">
 		                <column width="120px" label="Nom" align="center"></column>

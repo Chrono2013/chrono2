@@ -1,0 +1,9 @@
+<div apply="">
+	<menubar height="30px" >
+		<menuitem iconSclass="icon icon-white icon-user" label="Evenements" id="gerer" />
+	</menubar>
+ 	<window id="gererWindow" border="normal" width="70%" minheight="350" height="80%" sclass="sysWin" visible="false" mode="popup"   position="top, right" >
+    	<caption label="Gerer evenements ,courses, voitures, pilotes" />
+                    ddddssss
+	</window>
+</div>
