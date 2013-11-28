@@ -1,5 +1,3 @@
-<?page title="Gestion des données" contentType="text/html;charset=UTF-8"?>
-<zk>
 <div apply="Ctl.GererCtlMVC">
 
 	<div apply="org.zkoss.bind.BindComposer"
@@ -26,12 +24,5 @@
 		        </grid>
 		  <button id="addEvent" label="Ajouter un nouvel evenement" />
 	</div>
-	
 
-	
-	
-	
-
-	
 </div>
-</zk>

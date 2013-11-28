@@ -32,7 +32,7 @@
 
 <window id="gererWindow" border="normal" width="70%" minheight="350" height="98%" sclass="sysWin" visible="true" mode="popup"   position="top, right" >
     	<caption label="Gerer evenements ,courses, voitures, pilotes" />
-                    ddddssss
+                  	<include src="gerer.zul" />
 	</window>
 	</div>
 </window>
