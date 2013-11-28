@@ -7,7 +7,7 @@
 		                <column width="120px" label="Nom" align="center"></column>
 		                <column width="120px" label="Nom du circuit" align="center"></column>
 		                <column width="120px" label="Longueur du circuit" align="center" ></column>
-		                <column width="120px" label="Supprimer" align="center" ></column>		  
+		                <column width="70px" label="Delete" align="center" ></column> 
 		            </columns>
 		            
 		            <template name="model">
@@ -35,17 +35,16 @@
 		                <column width="120px" label="Type" align="center" ></column>
 		                <column width="240px" label="Heure de début" align="center" ></column>
 		                <column width="240px" label="Heure de fin" align="center" ></column>
-		                <column width="120px" label="depart auto" align="center" ></column>
-		                <column width="120px" label="Type Fin" align="center" ></column>
+		                <column width="80px" label="Depart auto" align="center" ></column>
+		                <column width="70px" label="Type Fin" align="center" ></column>
 		                <column width="150px" label="Durée max" align="center" ></column>
 		                <column width="120px" label="Commentaire" align="center" ></column>
-		                <column width="120px" label="Supprimer" align="center" ></column>
+		                <column width="70px" label="Delete" align="center" ></column>
 		            </columns>
 		            
 		            <template name="model">
-		                <row>
-		                    <textbox inplace="true"
-		                        value="EVENT A FAIRE" width="99%" />
+		                <row >
+		                    <label value="@bind(each.evenementSportif.nom)"   width="99%" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.nomCourse)" width="99%" />
 		                    <textbox inplace="true"
@@ -59,14 +58,7 @@
 		                    <timebox cols="12" format="short" value="@bind(each.dureeTotaleMaxPilote)" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.commentaire)" width="99%" />
-		                    <button label="X" onClick="@command('deleteCourse', course=each)">
-		                    	<attribute name="onClick"><![CDATA[
-		                    	    if(Messagebox.show("Voulez vous vraiment supprimer l'évenement ? (Courses et voitures supprimées)", "Question", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION) == Messagebox.YES){
-		                    	    	
-		                    	    }
-								    ]]>
-								</attribute>
-		                    </button>
+		                    <button label="X" onClick="@command('deleteCourse', course=each)"/>
 		                </row>
 		            </template>
 		        </grid>
