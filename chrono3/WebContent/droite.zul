@@ -22,5 +22,31 @@
                 	<textbox rows="3" value="" width="80%" />
                 </groupbox>
       
+      <div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vm') @init('Ctl.GererTopCtlMVVM')">
+      <grid hflex="min" model="@load(vm.tops)" id="eventGrid">		
+		            <columns height="22px">
+		                <column width="120px" label="Tour" align="center"></column>
+		                <column width="120px" label="Voiture" align="center"></column>
+		                <column width="120px" label="Pilote" align="center" ></column>
+		                <column width="120px" label="Tps de passage" align="center" ></column>
+		                <column width="120px" label="Etat Top" align="center" ></column>
+		                <column width="120px" label="Heure Top" align="center" ></column>
+		                <column width="120px" label="Commentaire" align="center" ></column>					  
+		            </columns>
+		            
+		            <template name="model">
+		                <row>
+		                    <textbox inplace="true"
+		                        value="@bind(each.nbTourTotalEffect)" width="99%" />
+		                    <textbox inplace="true"
+		                        value="@bind(each.sessionChronometrage.voiture.id)" width="99%" />
+							<textbox inplace="true"
+		                        value="@bind(each.)" width="99%" />
+		                    <button label="X" onClick="@command('deleteEvent', event=each)" />
+		                </row>
+		            </template>
+		        </grid>
+		        </div>
                  
 </div>
