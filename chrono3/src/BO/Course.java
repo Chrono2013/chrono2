@@ -5,34 +5,27 @@ import java.util.ArrayList;
 
 public class Course {
 
-	private String nomCourse;
-	private Date hDebut;
-	private Date hFin;
-	private boolean departAuto;
-	private int typeFin;
-	private int nbTourMax;
-	private Date dureeTotaleMaxPilote;
-	private Date dureeConsMaxPilote;
-	private String commentaire;
+	private String nomCourse="";
+	private Date hDebut=new Date();
+	private Date hFin= new Date();
+	private boolean departAuto=false;
+	private int typeFin=0 ;
+	private int nbTourMax=0;
+	private Date dureeTotaleMaxPilote=new Date();
+	private Date dureeConsMaxPilote=new Date();
+	private String commentaire="";
 	public EvenementSportif evenementSportif;
-	public TypeCourse typeCourse;
-	public Voiture voiturePrincipale;
+	public TypeCourse typeCourse =TypeCourse.normal;
+	public Voiture voiturePrincipale =new Voiture();
 	public ArrayList<SessionChronometrage> sessionsChronometrages = new ArrayList<SessionChronometrage>();
 	
-	public Course(){
-		nomCourse ="";
-		hDebut = new Date();
-		hFin = new Date();
-		departAuto = false;
-		typeFin = 0;
-		nbTourMax = 0;
-		dureeTotaleMaxPilote = new Date();
-		dureeConsMaxPilote = new Date();
-		commentaire = "";
-		evenementSportif = new EvenementSportif();
-		typeCourse = new TypeCourse();
-		voiturePrincipale = new Voiture();
-		sessionsChronometrages = new ArrayList<SessionChronometrage>();
+	public Course(EvenementSportif evenementSportif){
+		
+		
+		
+		this.evenementSportif = evenementSportif;
+	
+		
 	}
 	
 	public String getNomCourse() {
@@ -114,4 +107,6 @@ public class Course {
 			ArrayList<SessionChronometrage> sessionsChronometrages) {
 		this.sessionsChronometrages = sessionsChronometrages;
 	}
+	
+	
 }
