@@ -4,7 +4,7 @@
 
 
 <window  apply="Ctl.MainCtlMVC" height="100%" width="100%" >
-<div apply="Ctl.MenuCtlMVC" height="100%">
+<div apply="Ctl.MenuCtlMVC, Ctl.SelectionTopCtlMVC" height="100%">
 
 <borderlayout  id="tt" width="100%" height="100%" >
 			<north size="130px">
@@ -17,7 +17,7 @@
 			</north>
 			 <west  size="25%" flex="true" maxsize="250"  border="normal" >
 	        	<div  height="100%"   >
-	            	<include src="gauche.zul" />
+	            	<include src="gauche.zul" mode="instant" />
 	            </div>  
 			</west>
 			<east  border="none" size="75%" flex="true">

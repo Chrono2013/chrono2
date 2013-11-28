@@ -16,7 +16,7 @@ public class Course {
 	private String commentaire="";
 	public EvenementSportif evenementSportif;
 	public TypeCourse typeCourse =TypeCourse.normal;
-	public Voiture voiturePrincipale =new Voiture();
+	public Voiture voiturePrincipale;
 	public ArrayList<SessionChronometrage> sessionsChronometrages = new ArrayList<SessionChronometrage>();
 	
 	public Course(EvenementSportif evenementSportif){

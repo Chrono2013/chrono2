@@ -25,7 +25,7 @@ public class GererCourseCtlMVVM {
 	@GlobalCommand
     @NotifyChange("courses")
     public void addCourse() {
-        courses.add(new Course());
+        courses.add(new Course(new EvenementSportif()));
     }
 	
 	@Command

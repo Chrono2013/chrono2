@@ -29,11 +29,8 @@ Window gererWindow;
   }
  
 	@Listen("onClick = #gerer")
-public void afficheGerer(){
-gererWindow.setVisible(true);
- 
-
- 
+	public void afficheGerer(){
+		gererWindow.setVisible(true);
    }
  
 }

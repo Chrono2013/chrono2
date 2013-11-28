@@ -6,21 +6,26 @@ import java.util.ArrayList;
 public class Voiture {
 	private int id;
 	
-	private String couleur;
-	private int nbTour;
-	private long tpsEstimeTour;
-	private boolean voitureActive;
-	private double fuelUsed;
-	private int nbTourFait;
-	private int nbTourDepuisRelai;
-	private int idRelai;
-	private Date heureProchainPassage;
-	private boolean isConcurrent;
-	private String ecurie;
+	private String couleur="";
+	private int nbTour=0;
+	private long tpsEstimeTour=0;
+	private boolean voitureActive=true;
+	private double fuelUsed=0.0;
+	private int nbTourFait=0;
+	private int nbTourDepuisRelai=0;
+	private int idRelai=0;
+	private Date heureProchainPassage=new Date();
+	private boolean isConcurrent=false;;
+	private String ecurie="";
 	private EvenementSportif evenementSportif;
 	private ArrayList<Pilote> piloteDisponibles = new ArrayList<Pilote>();
 	private ArrayList<SessionChronometrage> sessionChronometrages = new ArrayList<SessionChronometrage>();
 	
+	
+	
+	public Voiture(EvenementSportif evenementSportif){
+		this.evenementSportif = evenementSportif;
+	}
 	
 	public int getId() {
 		return id;
