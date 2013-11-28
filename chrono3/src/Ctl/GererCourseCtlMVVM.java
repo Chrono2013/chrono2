@@ -25,12 +25,8 @@ public class GererCourseCtlMVVM {
 	@GlobalCommand
     @NotifyChange("courses")
     public void addCourse() {
-<<<<<<< HEAD
-        courses.add(new Course(new EvenementSportif()));
-=======
 		EvenementSportif event = new EvenementSportif();
         courses.add(new Course(event));
->>>>>>> branch 'master' of https://github.com/Chrono2013/chrono2.git
     }
 	
 	@Command
