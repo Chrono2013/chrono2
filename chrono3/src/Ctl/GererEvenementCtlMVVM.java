@@ -8,7 +8,7 @@ import org.zkoss.bind.annotation.NotifyChange;
 
 import BO.EvenementSportif;
 
-public class gererEvenementCtlMVVM {
+public class GererEvenementCtlMVVM {
 
 	private List<EvenementSportif> events = new ArrayList<EvenementSportif>();
 

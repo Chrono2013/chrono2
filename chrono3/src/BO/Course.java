@@ -24,15 +24,15 @@ public class Course {
 		hDebut = new Date();
 		hFin = new Date();
 		departAuto = false;
-		typeFin = 0; // ??
-		nbTourMax = 10; //?
+		typeFin = 0;
+		nbTourMax = 0;
 		dureeTotaleMaxPilote = new Date();
 		dureeConsMaxPilote = new Date();
 		commentaire = "";
-		evenementSportif = new EvenementSportif(); // ?
+		evenementSportif = new EvenementSportif();
 		typeCourse = new TypeCourse();
 		voiturePrincipale = new Voiture();
-		sessionsChronometrages = new ArrayList<SessionChronometrage>(); // ?
+		sessionsChronometrages = new ArrayList<SessionChronometrage>();
 	}
 	
 	public String getNomCourse() {

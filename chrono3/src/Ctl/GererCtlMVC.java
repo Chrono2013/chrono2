@@ -14,7 +14,7 @@ import org.zkoss.zul.Timer;
 
 import BO.EvenementSportif;
 
-public class gererCtlMVC extends SelectorComposer<Component>{
+public class GererCtlMVC extends SelectorComposer<Component>{
 	/**
 	* 
 	*/

@@ -1,4 +1,4 @@
-<div apply="">
+<div apply="Ctl.MenuCtlMVC">
 	<menubar height="30px" >
 		<menuitem iconSclass="icon icon-white icon-user" label="Evenements" id="gerer" />
 	</menubar>
