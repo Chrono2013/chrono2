@@ -2,6 +2,8 @@ package Ctl;
 
 import java.util.*;
 
+import org.zkoss.bind.annotation.BindingParam;
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
 
@@ -25,6 +27,12 @@ public class GererEvenementCtlMVVM {
 	        events.add(new EvenementSportif());
 	    }
 	
+	 @Command
+	    @NotifyChange("events")
+	    public void deleteEvent(@BindingParam("event") EvenementSportif myEvent) {
+	        events.remove(myEvent);
+	        System.out.println("Event Delete : "+myEvent.getNom());
+	    }
 	
 	
 }
