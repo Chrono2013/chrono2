@@ -33,11 +33,11 @@
 		                <column width="120px" label="Evenement" align="center"></column>
 		                <column width="120px" label="Nom du course" align="center"></column>
 		                <column width="120px" label="Type" align="center" ></column>
-		                <column width="120px" label="Heure de début" align="center" ></column>
-		                <column width="120px" label="Heure de fin" align="center" ></column>
+		                <column width="240px" label="Heure de début" align="center" ></column>
+		                <column width="240px" label="Heure de fin" align="center" ></column>
 		                <column width="120px" label="depart auto" align="center" ></column>
 		                <column width="120px" label="Type Fin" align="center" ></column>
-		                <column width="120px" label="Durée max" align="center" ></column>
+		                <column width="150px" label="Durée max" align="center" ></column>
 		                <column width="120px" label="Commentaire" align="center" ></column>
 		                <column width="120px" label="Supprimer" align="center" ></column>
 		            </columns>
@@ -50,16 +50,13 @@
 		                        value="@bind(each.nomCourse)" width="99%" />
 		                    <textbox inplace="true"
 		                        value="A FAIRE typeCourse" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.hDebut)" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.hFin)" width="99%" />
+		                    <datebox cols="12" format="long+medium" width="230px" value="@bind(each.hDebut)"/>
+		                    <datebox cols="12" format="long+medium" width="230px" value="@bind(each.hFin)"/>
 		                    <textbox inplace="true"
 		                        value="A FAIRE departAuto" width="99%" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.typeFin)" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.dureeTotaleMaxPilote)" width="99%" />
+		                    <timebox cols="12" format="short" value="@bind(each.dureeTotaleMaxPilote)" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.commentaire)" width="99%" />
 		                    <button label="X" onClick="@command('deleteCourse', course=each)" />
