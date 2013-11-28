@@ -8,7 +8,6 @@ import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
 
 import BO.Course;
-import BO.EvenementSportif;
 
 public class GererCourseCtlMVVM {
 	

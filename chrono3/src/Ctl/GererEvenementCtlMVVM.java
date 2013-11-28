@@ -12,6 +12,7 @@ import BO.EvenementSportif;
 public class GererEvenementCtlMVVM {
 
 	public ArrayList<EvenementSportif> events = new ArrayList<EvenementSportif>();
+	public EvenementSportif selectedEvent;
 
 	public ArrayList<EvenementSportif> getEvents() {
 		return events;
@@ -20,6 +21,14 @@ public class GererEvenementCtlMVVM {
 	public void setEvents(ArrayList<EvenementSportif> events) {
 		this.events = events;
 	}
+	
+	 public void setSelectedEvent(EvenementSportif selected) {
+	        this.selectedEvent = selected;
+	    }
+	 
+	 public EvenementSportif getSelectedEvent() {
+	        return selectedEvent;
+	    }
 	
 	 @GlobalCommand
 	    @NotifyChange("events")
@@ -33,6 +42,5 @@ public class GererEvenementCtlMVVM {
 	        events.remove(myEvent);
 	        System.out.println("Event Delete : "+myEvent.getNom());
 	    }
-	
 	
 }

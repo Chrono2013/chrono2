@@ -2,7 +2,7 @@
 
 	<div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vm') @init('Ctl.GererEvenementCtlMVVM')">
-		<grid hflex="min" model="@load(vm.events)" id="eventGrid">		
+		<grid hflex="min" model="@load(vm.events)" id="eventGrid" >		
 		            <columns height="22px">
 		                <column width="120px" label="Nom" align="center"></column>
 		                <column width="120px" label="Nom du circuit" align="center"></column>
@@ -27,7 +27,7 @@
 	</div>
 	<space />
 	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vm') @init('Ctl.GererCourseCtlMVVM')">
+	        viewModel="@id('vm') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
 		<grid hflex="min" model="@load(vm.courses)" id="courseGrid">		
 		            <columns height="22px">
 		                <column width="120px" label="Evenement" align="center"></column>
@@ -45,7 +45,7 @@
 		            <template name="model">
 		                <row>
 		                    <textbox inplace="true"
-		                        value="A FAIRE event" width="99%" />
+		                        value="EVENT A FAIRE" width="99%" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.nomCourse)" width="99%" />
 		                    <textbox inplace="true"
@@ -59,7 +59,14 @@
 		                    <timebox cols="12" format="short" value="@bind(each.dureeTotaleMaxPilote)" />
 		                    <textbox inplace="true"
 		                        value="@bind(each.commentaire)" width="99%" />
-		                    <button label="X" onClick="@command('deleteCourse', course=each)" />
+		                    <button label="X" onClick="@command('deleteCourse', course=each)">
+		                    	<attribute name="onClick"><![CDATA[
+		                    	    if(Messagebox.show("Voulez vous vraiment supprimer l'évenement ? (Courses et voitures supprimées)", "Question", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION) == Messagebox.YES){
+		                    	    	
+		                    	    }
+								    ]]>
+								</attribute>
+		                    </button>
 		                </row>
 		            </template>
 		        </grid>
