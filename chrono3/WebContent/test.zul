@@ -1,9 +1,10 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
+<div apply="Ctl.gererCtlMVC">
 
 	<div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vm') @init('Ctl.gererEvenementCtlMVVM')">
-		<grid hflex="min" model="@load(vm)">
+		<grid hflex="min" model="@load(vm.events)" id="eventGrid">
 		
 		            <columns height="22px">
 		                <column width="120px" label="Nom" align="center"></column>
@@ -22,6 +23,32 @@
 		                </row>
 		            </template>
 		        </grid>
+		  <button id="addEvent" label="ADD" />
 	</div>
-
+	
+		<div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vm') @init('Ctl.gererCourseCtlMVVM')">
+		<grid hflex="min" model="@load(vm.courses)" id="courseGrid">
+		
+		            <columns height="22px">
+		                <column width="120px" label="Nom" align="center"></column>
+		                <column width="120px" label="Nom du circuit" align="center"></column>
+		                <column width="120px" label="Longueur du circuit" align="center" ></column>
+		            </columns>
+		            
+		            <template name="model">
+		                <row>
+		                    <textbox inplace="true"
+		                        value="@bind(each.nom)" width="99%" />
+		                    <textbox inplace="true"
+		                        value="@bind(each.nomCircuit)" width="99%" />
+							<textbox inplace="true"
+		                        value="@bind(each.longueurCircuit)" width="99%" />
+		                </row>
+		            </template>
+		        </grid>
+		  <button id="addCourse" label="ADD" />
+	</div>
+	
+</div>
 </zk>
