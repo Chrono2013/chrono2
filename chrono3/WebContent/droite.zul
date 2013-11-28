@@ -1,1 +1,26 @@
-<div>droite</div>
+<div height="100%">
+
+    <groupbox width="100%" id="groupInfoPilote"  visible="true" >
+                <caption>
+                   Infos pilote 
+                </caption>
+                
+                 
+      </groupbox>
+       <groupbox width="100%" id="groupInfoCourse"  visible="true" >
+                <caption>
+                   Infos course
+                </caption>
+     </groupbox>
+                
+                
+                
+                   <groupbox width="100%" id="groupInfoCommentaire"  visible="true" >
+                <caption>
+                  	Commentaire du prochain Top
+                </caption>
+                	<textbox rows="3" value="" width="80%" />
+                </groupbox>
+      
+                 
+</div>
