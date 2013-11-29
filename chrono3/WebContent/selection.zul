@@ -1,24 +1,41 @@
  <div height="100px" width="100%" >
  <groupbox width="100%" height="100%" >
+ 
+
                 <caption>
                     
                     Course suivie
                 </caption>
-               <combobox id="cmbEvenementSuivi" width="150px"  readonly="true" >
+                
+              		<div apply="org.zkoss.bind.BindComposer"        viewModel="@id('vmCoursesSelectionSessionChrono') @init('Ctl.GererCourseCtlMVVM')"   height="100%">  
                
-                   
-                </combobox>
-                <combobox id="cmbCourseSuivie" width="150px"   readonly="true">
-                   
-                </combobox>
+		<combobox model="@bind(vmEvenements.events)"		selectedItem="@bind(vmCoursesSelectionSessionChrono.selectedEvenementSportif)"	id="cmbEvenementSuivi" width="150px"  readonly="true">
+			<template name="model" var="p1">
+				<comboitem label="@bind(p1.nom)"
+					value="@bind(p1)" />
+			</template>
+		</combobox>
+		
+		
+			<combobox model="@bind(vmCoursesSelectionSessionChrono.courses)"	selectedItem="@bind(vmCoursesSelectionSessionChrono.selectedCourse)"			   id="cmbCourseSuivie" width="150px"  readonly="true">
+			<template name="model" var="p2">
+				<comboitem label="@bind(p2.nomCourse)"
+					value="@bind(p2)" />
+			</template>
+		</combobox>
+		
+                
+        
+             
                 <combobox id="cmbVoiture" width="150px"  readonly="true" >
                    
                 </combobox>
                 <button label="Départ Course" id="btnDepartCourse" onClick="restart()" />
             <label id="now" sclass="time" />
                <label id="heure" sclass="time" />
+               </div>
             </groupbox>
-            
+             
 
 <zscript>
     long countNum = 0;

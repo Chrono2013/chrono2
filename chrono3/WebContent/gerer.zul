@@ -1,8 +1,7 @@
 <div apply="Ctl.GererCtlMVC">
 
-	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vm') @init('Ctl.GererEvenementCtlMVVM')">
-		<grid hflex="min" model="@load(vm.events)" id="eventGrid" >		
+	
+		<grid hflex="min" model="@bind(vmEvenements.events)" id="eventGrid" >		
 		            <columns height="22px">
 		                <column width="120px" label="Nom" align="center"></column>
 		                <column width="120px" label="Nom du circuit" align="center"></column>
@@ -24,11 +23,11 @@
 		        </grid>
 		        <space />
 		  <button id="addEvent" label="Ajouter un nouvel evenement" />
-	</div>
+	
 	<space />
 	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vm') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
-		<grid hflex="min" model="@load(vm.courses)" id="courseGrid">		
+	        viewModel="@id('vma') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
+		<grid hflex="min" model="@load(vma.courses)" id="courseGrid">		
 		            <columns height="22px">
 		                <column width="120px" label="Evenement" align="center"></column>
 		                <column width="120px" label="Nom du course" align="center"></column>

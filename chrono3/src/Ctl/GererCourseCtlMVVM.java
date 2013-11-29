@@ -12,7 +12,35 @@ import BO.EvenementSportif;
 
 public class GererCourseCtlMVVM {
 
-	public ArrayList<Course> courses = new ArrayList<Course>();
+	private ArrayList<Course> courses = new ArrayList<Course>();
+	private EvenementSportif selectedEvenementSportif = new EvenementSportif();
+	private Course selectedCourse = new Course(selectedEvenementSportif);
+	
+	
+	public Course getSelectedCourse() {
+		return selectedCourse;
+	}
+
+	public void setSelectedCourse(Course selectedCourse) {
+		this.selectedCourse = selectedCourse;
+	}
+
+	public EvenementSportif getSelectedEvenementSportif() {
+		return selectedEvenementSportif;
+	}
+
+	@NotifyChange({"courses", "selectedCourse"})
+	public void setSelectedEvenementSportif(EvenementSportif selectedEvenementSportif) {
+		//System.out.println(selectedEvenementSportif.getNom());
+		this.selectedEvenementSportif = selectedEvenementSportif;
+		this.courses = selectedEvenementSportif.getCourses();
+		selectedCourse =null;
+		//System.out.println(courses.get(0).getNomCourse());
+	}
+
+	public  GererCourseCtlMVVM(){
+		System.out.println("oo");
+	}
 
 	public ArrayList<Course> getCourses() {
 		return courses;
@@ -25,8 +53,8 @@ public class GererCourseCtlMVVM {
 	@GlobalCommand
     @NotifyChange("courses")
     public void addCourse() {
-		EvenementSportif event = new EvenementSportif();
-        courses.add(new Course(event));
+		//EvenementSportif event = new EvenementSportif();
+        courses.add(new Course(selectedEvenementSportif));
     }
 	
 	@Command
@@ -50,6 +78,12 @@ public class GererCourseCtlMVVM {
 	    );
 }*/
 	}
+	/*
+	 @Command
+	 public void selectionEvenementSportif(){
+	       
+	 }
+	*/
 	
 	
 	
