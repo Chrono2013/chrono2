@@ -6,6 +6,7 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zul.ListModelList;
 
 import BO.Course;
 import BO.EvenementSportif;
@@ -14,6 +15,7 @@ public class GererCourseCtlMVVM {
 
 	private ArrayList<Course> courses = new ArrayList<Course>();
 	private EvenementSportif selectedEvenementSportif = new EvenementSportif();
+	/*
 	private Course selectedCourse = new Course(selectedEvenementSportif);
 	
 	
@@ -24,24 +26,26 @@ public class GererCourseCtlMVVM {
 	public void setSelectedCourse(Course selectedCourse) {
 		this.selectedCourse = selectedCourse;
 	}
-
+*/
 	public EvenementSportif getSelectedEvenementSportif() {
 		return selectedEvenementSportif;
 	}
 
-	@NotifyChange({"courses", "selectedCourse"})
+	@NotifyChange("courses")
 	public void setSelectedEvenementSportif(EvenementSportif selectedEvenementSportif) {
-		//System.out.println(selectedEvenementSportif.getNom());
 		this.selectedEvenementSportif = selectedEvenementSportif;
 		this.courses = selectedEvenementSportif.getCourses();
-		selectedCourse =null;
-		//System.out.println(courses.get(0).getNomCourse());
 	}
-
+	
+	@GlobalCommand
+	public void clearSelectionCourse(@BindingParam("listModel")ListModelList model) {
+		model.clearSelection();
+	}
+	/*
 	public  GererCourseCtlMVVM(){
 		System.out.println("oo");
 	}
-
+*/
 	public ArrayList<Course> getCourses() {
 		return courses;
 	}
@@ -54,8 +58,21 @@ public class GererCourseCtlMVVM {
     @NotifyChange("courses")
     public void addCourse() {
 		//EvenementSportif event = new EvenementSportif();
-        courses.add(new Course(selectedEvenementSportif));
+		if(selectedEvenementSportif.getCourses() == null){
+			System.out.println("fifi");
+		}
+        courses.add(new Course(this.selectedEvenementSportif));
     }
+	
+	
+	@GlobalCommand
+	@NotifyChange("courses")
+	public void setEvenementSessionSelectedp(@BindingParam("evenementp") EvenementSportif myEvenement, @BindingParam("listModel")ListModelList model){	
+		this.selectedEvenementSportif = myEvenement;
+		this.courses = myEvenement.getCourses();
+		model.clearSelection();
+	}
+	
 	
 	@Command
     @NotifyChange("courses")

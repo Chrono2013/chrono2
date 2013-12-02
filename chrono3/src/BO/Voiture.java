@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Voiture {
 	private int id;
 	
-	private String couleur="";
+	private String couleur="#FFFFFF";
 	private int nbTour=0;
 	private long tpsEstimeTour=0;
 	private boolean voitureActive=true;
@@ -15,9 +15,9 @@ public class Voiture {
 	private int nbTourDepuisRelai=0;
 	private int idRelai=0;
 	private Date heureProchainPassage=new Date();
-	private boolean isConcurrent=false;;
+	private boolean isConcurrent=false;
 	private String ecurie="";
-	private EvenementSportif evenementSportif;
+	private EvenementSportif evenementSportif= new EvenementSportif();
 	private ArrayList<Pilote> piloteDisponibles = new ArrayList<Pilote>();
 	private ArrayList<SessionChronometrage> sessionChronometrages = new ArrayList<SessionChronometrage>();
 	

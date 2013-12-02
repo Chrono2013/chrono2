@@ -1,69 +1,124 @@
 <div apply="Ctl.GererCtlMVC">
 
-	
-		<grid hflex="min" model="@bind(vmEvenements.events)" id="eventGrid" >		
-		            <columns height="22px">
-		                <column width="120px" label="Nom" align="center"></column>
-		                <column width="120px" label="Nom du circuit" align="center"></column>
-		                <column width="120px" label="Longueur du circuit" align="center" ></column>
-		                <column width="70px" label="Delete" align="center" ></column> 
-		            </columns>
-		            
-		            <template name="model">
-		                <row>
-		                    <textbox inplace="true"
-		                        value="@bind(each.nom)" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.nomCircuit)" width="99%" />
-							<textbox inplace="true"
-		                        value="@bind(each.longueurCircuit)" width="99%" />
-		                    <button label="X" onClick="@command('deleteEvent', event=each)" />
-		                </row>
-		            </template>
-		        </grid>
+	<div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vmCourses') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
+	        <div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vmVoitures') @init('Ctl.GererVoitureCtlMVVM')"   style="overflow:auto;">
+  <groupbox width="98%" id="groupGererEvenements"  >
+                <caption>
+                    
+                    Gerer Evenements
+                </caption>
+ <listbox id="eventBox" model="@bind(vmEvenements.events)" onSelect="@global-command('setEvenementSelected', evenementp=self.selectedItem.value)" 	 hflex="min" rows="4" nonselectableTags="" checkmark="true" multiple="false">
+        <listhead sizable="true" >
+          <listheader width="50px" label="" align="center" />
+            <listheader width="120px" label="Nom" align="center" />
+            <listheader width="120px" label="Nom du circuit" align="center" />
+            <listheader width="120px" label="Longueur du circuit" align="center" />
+            <listheader width="70px" label="Delete" align="center" />
+        </listhead>
+         <template name="model">
+                <listitem>
+                  <listcell  />
+                    <listcell ><textbox inplace="true" value="@bind(each.nom)" width="99%" /></listcell>
+		            <listcell > <textbox inplace="true" value="@bind(each.nomCircuit)" width="99%" /></listcell>
+		            <listcell > <intbox inplace="true" value="@bind(each.longueurCircuit)" width="99%" /></listcell>
+		            <listcell ><button label="X" onClick="@command('deleteEvent', event=each)" /></listcell>
+                </listitem>
+            </template>
+    </listbox>
+		
 		        <space />
 		  <button id="addEvent" label="Ajouter un nouvel evenement" />
+	</groupbox>
 	
-	<space />
-	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vma') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
-		<grid hflex="min" model="@load(vma.courses)" id="courseGrid">		
-		            <columns height="22px">
-		                <column width="120px" label="Evenement" align="center"></column>
-		                <column width="120px" label="Nom du course" align="center"></column>
-		                <column width="120px" label="Type" align="center" ></column>
-		                <column width="240px" label="Heure de début" align="center" ></column>
-		                <column width="240px" label="Heure de fin" align="center" ></column>
-		                <column width="80px" label="Depart auto" align="center" ></column>
-		                <column width="70px" label="Type Fin" align="center" ></column>
-		                <column width="150px" label="Durée max" align="center" ></column>
-		                <column width="120px" label="Commentaire" align="center" ></column>
-		                <column width="70px" label="Delete" align="center" ></column>
-		            </columns>
-		            
-		            <template name="model">
-		                <row >
-		                    <label value="@bind(each.evenementSportif.nom)"   width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.nomCourse)" width="99%" />
-		                    <textbox inplace="true"
-		                        value="A FAIRE typeCourse" width="99%" />
-		                    <datebox cols="12" format="long+medium" width="230px" value="@bind(each.hDebut)"/>
-		                    <datebox cols="12" format="long+medium" width="230px" value="@bind(each.hFin)"/>
-		                    <textbox inplace="true"
-		                        value="A FAIRE departAuto" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.typeFin)" width="99%" />
-		                    <timebox cols="12" format="short" value="@bind(each.dureeTotaleMaxPilote)" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.commentaire)" width="99%" />
-		                    <button label="X" onClick="@command('deleteCourse', course=each)"/>
-		                </row>
-		            </template>
-		        </grid>
+	
+		<groupbox width="98%" id="groupGererCourses"  >
+                <caption>
+                    
+                    Gerer Courses
+                </caption>
+
+
+     <listbox id="coursesBox" model="@bind(vmCourses.courses)"  rows="4" 	 >
+        <listhead sizable="true" >
+    
+            <listheader width="110px" label="Nom du course" align="center" />
+            <listheader width="90px" label="Type" align="center"  />
+            <listheader width="120px" label="H début" align="center"  />
+			<listheader  width="120px" label="H fin" align="center"  />
+			<listheader  width="80px" label="Depart auto" align="center" />
+			<listheader  width="70px" label="Type Fin" align="center" />
+			<listheader  width="100px" label="Durée max" align="center"  />
+			<listheader  width="120px" label="Commentaire" align="center"  />
+			<listheader  width="70px" label="Delete" align="center"  />
+	
+
+        </listhead>
+         <template name="model">
+                <listitem>
+              
+		            <listcell><textbox inplace="true"  value="@bind(each.nomCourse)" width="99%" /></listcell>
+		            <listcell><textbox inplace="true" width="99%" /></listcell>
+		            <listcell><datebox format="KK:mm:ss" width="100px" value="@bind(each.hDebut)"/></listcell>
+		            <listcell><datebox format="KK:mm:ss" width="100px" value="@bind(each.hFin)"/></listcell>
+		            <listcell><textbox inplace="true" width="99%" /></listcell>
+		            <listcell><textbox inplace="true"  value="@bind(each.typeFin)" width="99%" /></listcell>
+		   
+		            <listcell><timebox format="medium" value="@bind(each.dureeTotaleMaxPilote)" /></listcell>
+		            <listcell><textbox inplace="true" value="@bind(each.commentaire)" width="99%" /></listcell>
+		            <listcell><button label="X" onClick="@command('deleteCourse', course=each)"/></listcell>
+                </listitem>
+            </template>
+    </listbox>
+	        
+	       
 		        <space />
 		  <button id="addCourse" label="Ajouter une nouvelle course" />
-	</div>
-	<space />
+	
+	</groupbox>
+	
+		<groupbox width="98%" id="groupGererVoitures"  >
+                <caption>
+                    
+                    Gerer Voitures
+                </caption>
 
+
+     <listbox id="voitureBox" model="@bind(vmVoitures.voitures)"  rows="4" 	 >
+        <listhead sizable="true" >
+    
+            <listheader width="110px" label="ID" align="center" />
+            <listheader width="90px" label="Couleur" align="center"  />
+        
+			<listheader  width="120px" label="active" align="center"  />
+			<listheader  width="80px" label="Ecurie" align="center" />
+			<listheader  width="70px" label="Concurrent" align="center" />
+			        </listhead>
+         <template name="model">
+                <listitem>
+              
+		            <listcell> <intbox inplace="true"  value="@bind(each.id)" width="99%" /></listcell>
+		       
+		            <listcell><colorbox value="@bind(each.couleur)" width="35px" /></listcell>
+		            
+		                     <listcell><checkbox value="@bind(each.voitureActive)"></checkbox></listcell>
+		            <listcell><textbox inplace="true" value="@bind(each.ecurie)" width="99%" /></listcell>
+		                 <listcell><checkbox value="@bind(each.concurrent)"></checkbox></listcell>
+		            <listcell><button label="X" onClick="@command('deleteVoiture', voiture=each)"/></listcell>
+		            
+                </listitem>
+            </template>
+    </listbox>
+	        
+	       
+		        <space />
+		  <button id="addVoiture" label="Ajouter une nouvelle voiture" />
+	
+	</groupbox>
+	
+	
+	</div>
+	
+</div>
 </div>

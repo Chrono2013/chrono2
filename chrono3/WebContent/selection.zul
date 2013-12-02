@@ -7,33 +7,39 @@
                     Course suivie
                 </caption>
                 
-              		<div apply="org.zkoss.bind.BindComposer"        viewModel="@id('vmCoursesSelectionSessionChrono') @init('Ctl.GererCourseCtlMVVM')"   height="100%">  
-               
-		<combobox model="@bind(vmEvenements.events)"		selectedItem="@bind(vmCoursesSelectionSessionChrono.selectedEvenementSportif)"	id="cmbEvenementSuivi" width="150px"  readonly="true">
+              	
+              	
+        <hlayout>     
+		<combobox model="@bind(vmEvenements.events)" onSelect="@global-command('setEvenementSessionSelectedp', evenementp=self.selectedItem.value, listModel=cmbCourseSuivie.model, listModel2=cmbVoiture.model)"			id="cmbEvenementSuivi" width="150px"  readonly="true">
 			<template name="model" var="p1">
 				<comboitem label="@bind(p1.nom)"
 					value="@bind(p1)" />
 			</template>
 		</combobox>
 		
-		
-			<combobox model="@bind(vmCoursesSelectionSessionChrono.courses)"	selectedItem="@bind(vmCoursesSelectionSessionChrono.selectedCourse)"			   id="cmbCourseSuivie" width="150px"  readonly="true">
+			<div apply="org.zkoss.bind.BindComposer"   viewModel="@id('vmCoursesSelectionSessionChrono') @init('Ctl.GererCourseCtlMVVM')"   height="100%">
+			<combobox model="@bind(vmCoursesSelectionSessionChrono.courses)"	   id="cmbCourseSuivie" width="150px"  readonly="true">
 			<template name="model" var="p2">
 				<comboitem label="@bind(p2.nomCourse)"
 					value="@bind(p2)" />
 			</template>
 		</combobox>
-		
+		</div>
                 
-        
+        	<div apply="org.zkoss.bind.BindComposer"        viewModel="@id('vmVoituresSelectionSessionChrono') @init('Ctl.GererVoitureCtlMVVM')"   height="100%">  
              
-                <combobox id="cmbVoiture" width="150px"  readonly="true" >
-                   
+                <combobox id="cmbVoiture" model="@bind(vmVoituresSelectionSessionChrono.voitures)" width="150px"  readonly="true" >
+                   <template name="model" var="p3">
+					<comboitem label="@bind(p3.id)"	value="@bind(p3)" />
+			</template>
                 </combobox>
+                
+                </div> 
                 <button label="Départ Course" id="btnDepartCourse" onClick="restart()" />
             <label id="now" sclass="time" />
                <label id="heure" sclass="time" />
-               </div>
+               
+              </hlayout>  
             </groupbox>
              
 
