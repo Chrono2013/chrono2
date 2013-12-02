@@ -1,15 +1,17 @@
 <div apply="Ctl.GererCtlMVC">
 
-	<div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vmCourses') @init('Ctl.GererCourseCtlMVVM')"   style="overflow:auto;">
+	
+	        
+	        
 	        <div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vmVoitures') @init('Ctl.GererVoitureCtlMVVM')"   style="overflow:auto;">
+	        viewModel="@id('vmGerer') @init('Ctl.GererGererCtlMVVM')"   style="overflow:auto;">
+	        
   <groupbox width="98%" id="groupGererEvenements"  >
                 <caption>
                     
                     Gerer Evenements
                 </caption>
- <listbox id="eventBox" model="@bind(vmEvenements.events)" onSelect="@global-command('setEvenementSelected', evenementp=self.selectedItem.value)" 	 hflex="min" rows="4" nonselectableTags="" checkmark="true" multiple="false">
+ <listbox id="eventBox" model="@bind(vmEvenements.events)" onSelect="@command('setEvenementSelectedp', evenementp=self.selectedItem.value)" 	 hflex="min" rows="4" nonselectableTags="" checkmark="true" multiple="false">
         <listhead sizable="true" >
           <listheader width="50px" label="" align="center" />
             <listheader width="120px" label="Nom" align="center" />
@@ -40,7 +42,7 @@
                 </caption>
 
 
-     <listbox id="coursesBox" model="@bind(vmCourses.courses)"  rows="4" 	 >
+     <listbox id="coursesBox" model="@bind(vmGerer.courses)"  rows="4" 	 >
         <listhead sizable="true" >
     
             <listheader width="110px" label="Nom du course" align="center" />
@@ -67,14 +69,14 @@
 		   
 		            <listcell><timebox format="medium" value="@bind(each.dureeTotaleMaxPilote)" /></listcell>
 		            <listcell><textbox inplace="true" value="@bind(each.commentaire)" width="99%" /></listcell>
-		            <listcell><button label="X" onClick="@command('deleteCourse', course=each)"/></listcell>
+		            <listcell><button label="X" onClick="@global-command('deleteCourse', course=each)"/></listcell>
                 </listitem>
             </template>
     </listbox>
 	        
 	       
 		        <space />
-		  <button id="addCourse" label="Ajouter une nouvelle course" />
+		  <button id="addCourse" label="Ajouter une nouvelle course" onClick="@global-command('addCourse')"  disabled="@bind( vmGerer.selectedEvenementSportif eq null )" />
 	
 	</groupbox>
 	
@@ -85,7 +87,7 @@
                 </caption>
 
 
-     <listbox id="voitureBox" model="@bind(vmVoitures.voitures)"  rows="4" 	 >
+     <listbox id="voitureBox" model="@bind(vmGerer.voitures)"  rows="4" 	 >
         <listhead sizable="true" >
     
             <listheader width="110px" label="ID" align="center" />
@@ -94,6 +96,7 @@
 			<listheader  width="120px" label="active" align="center"  />
 			<listheader  width="80px" label="Ecurie" align="center" />
 			<listheader  width="70px" label="Concurrent" align="center" />
+			<listheader  width="70px" label="Delete" align="center"  />
 			        </listhead>
          <template name="model">
                 <listitem>
@@ -105,7 +108,7 @@
 		                     <listcell><checkbox value="@bind(each.voitureActive)"></checkbox></listcell>
 		            <listcell><textbox inplace="true" value="@bind(each.ecurie)" width="99%" /></listcell>
 		                 <listcell><checkbox value="@bind(each.concurrent)"></checkbox></listcell>
-		            <listcell><button label="X" onClick="@command('deleteVoiture', voiture=each)"/></listcell>
+		            <listcell><button label="X" onClick="@global-command('deleteVoiture', voiture=each)"/></listcell>
 		            
                 </listitem>
             </template>
@@ -113,12 +116,12 @@
 	        
 	       
 		        <space />
-		  <button id="addVoiture" label="Ajouter une nouvelle voiture" />
+		  <button id="addVoiture" label="Ajouter une nouvelle voiture"  onClick="@global-command('addVoiture')" disabled="@bind( vmGerer.selectedEvenementSportif eq null )" />
 	
 	</groupbox>
 	
 	
-	</div>
+	
 	
 </div>
 </div>
