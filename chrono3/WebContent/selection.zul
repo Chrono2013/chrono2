@@ -38,7 +38,7 @@
 			</template>
                 </combobox>
                 
-          zz
+         
                 <button label="Départ Course" id="btnDepartCourse" disabled="@bind(vmSession.sessionChronometragePrincipale.tops eq null)" onClick="restart()" />
             <label id="now" sclass="time" />
                <label id="heure" sclass="time" />

@@ -2,7 +2,7 @@
   <div  hflex="1" >
      <groupbox width="98%" id="groupVoiturePrincipale"  >
                 <caption>
-                    
+                    <label value="@bind(vmSession.a )"></label>
                     Voiture principale : <label value="@bind(vmSession.voiturePrincipale.id)" ></label>
                 </caption>
                 

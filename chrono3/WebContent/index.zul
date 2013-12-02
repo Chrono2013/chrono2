@@ -23,7 +23,7 @@
 			 <west  size="25%" flex="true" maxsize="250"  border="normal" >
 	        	<div  height="100%"   >
 	        	
-	        <label value="@bind(  vmSession.sessionChronometragePrincipale ne null )"></label>
+	        
 	        	<include src="gauche.zul" />
 	            	
 	            </div>  

@@ -1,6 +1,8 @@
 package Ctl;
 
 import java.util.ArrayList;
+
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 
@@ -17,27 +19,46 @@ public class GererSessionCtlMVVM {
 	private Voiture voiture2;
 	private Voiture voiture3;
 	private Voiture voiture4;
-	private boolean isButtonDisabled;
+	private boolean buttonDisabled=true;
+	private String a="dddd";
 	
-	public GererSessionCtlMVVM(){
-		
+	
+	public boolean isButtonDisabled() {
+		return buttonDisabled;
+	}
+
+
+	public void setButtonDisabled(boolean buttonDisabled) {
+		this.buttonDisabled = buttonDisabled;
+	}
+
+	
+	@NotifyChange("a")
+	public void initSession2(){
+		a="jkhjkhjkhjkh";
+		System.out.println("ljl");
+		 BindUtils.postNotifyChange(null,null,a,"value1");
 	}
 	
+	
 	//@Command
-	@NotifyChange({"sessionChronometragePrincipale","voiturePrincipale"})
+	@NotifyChange({"sessionChronometragePrincipale","voiturePrincipale","a"})
 	public void initSession(){
 		//sessionChronometragePrincipale =new SessionChronometrage(course, voiture);
 		//voiturePrincipale = voiture;
 		if(course != null){
 			if(voiturePrincipale != null){
-				System.out.println("iciciiciicci");
+				buttonDisabled=false;
+				setA("bbbbbbb");
+				//System.out.println(buttonDisabled);
+				//System.out.println("lalal");
 				this.sessionChronometragePrincipale =null;
 				for(SessionChronometrage sessionChrono : sessionChronometrages){
 					if(sessionChrono.getCourse() == course &&  sessionChrono.getVoiture() == voiturePrincipale ){
 						// une session existe afficher
 						System.out.println("laaa");
 						sessionChronometragePrincipale = sessionChrono;
-				
+						
 					}
 					/*
 				if(sessionChronometragePrincipale == null){
@@ -79,6 +100,7 @@ public class GererSessionCtlMVVM {
 	}
 	public void setVoiturePrincipale(Voiture voiturePrincipale) {
 		this.voiturePrincipale = voiturePrincipale;
+	initSession2();
 	initSession();
 	}
 	public Voiture getVoiture1() {
@@ -105,6 +127,19 @@ public class GererSessionCtlMVVM {
 	public void setVoiture4(Voiture voiture4) {
 		this.voiture4 = voiture4;
 	}
+
+
+	public String getA() {
+		System.out.println("geta");
+		return a;
+	}
+
+
+	public void setA(String a) {
+		this.a = a;
+	}
+
+	
 	
 	
 	
