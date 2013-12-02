@@ -3,8 +3,10 @@
 <zk xmlns:n="native">
 
 
-<window  apply="Ctl.MainCtlMVC" height="100%" width="100%" >
+<window  height="100%" width="100%" >
 <div apply="Ctl.MenuCtlMVC, Ctl.SelectionTopCtlMVC" height="100%">
+   <div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vmSession') @init('Ctl.GererSessionCtlMVVM')"   style="overflow:auto;" height="100%">
 <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vmEvenements') @init('Ctl.GererEvenementCtlMVVM')" height="100%">
       
@@ -20,7 +22,10 @@
 			</north>
 			 <west  size="25%" flex="true" maxsize="250"  border="normal" >
 	        	<div  height="100%"   >
-	            	<include src="gauche.zul" mode="instant" />
+	        	
+	        <label value="@bind(  vmSession.sessionChronometragePrincipale ne null )"></label>
+	        	<include src="gauche.zul" />
+	            	
 	            </div>  
 			</west>
 			<east  border="none" size="75%" flex="true">
@@ -33,7 +38,7 @@
     	<caption label="Gerer evenements ,courses, voitures, pilotes" />
                   	<include src="gerer.zul" />
 	</window>
-	</div></div>
+	</div></div></div>
 </window>
     
     

@@ -2,6 +2,8 @@ package Ctl;
 
 import java.util.ArrayList;
 
+import org.zkoss.bind.annotation.BindingParam;
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
 
@@ -31,7 +33,6 @@ public class GererTopCtlMVVM {
 	public void setTops(ArrayList<Top> tops) {
 		this.tops = tops;
 	}
-	//addTop
 	
 	 @GlobalCommand
 	    @NotifyChange("tops")
@@ -39,6 +40,15 @@ public class GererTopCtlMVVM {
 		 System.out.println("sdffsd");
 	        tops.add(new Top(new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()))));
 	    }
+	 
+	 @GlobalCommand
+	    @NotifyChange("tops")
+	    public void deleteTop(@BindingParam("top") Top myTop) {
+		 System.out.println("deleteTop");
+			tops.remove(myTop);
+		}
+	   
+	 
 	
 	/*
 	 @GlobalCommand

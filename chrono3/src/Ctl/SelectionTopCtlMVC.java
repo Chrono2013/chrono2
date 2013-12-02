@@ -28,7 +28,7 @@ public class SelectionTopCtlMVC extends SelectorComposer<Component>{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		}
-		System.out.println("lkjklj");
+	
 		//wire variables and event listners
 		      //do whatever you want (you could access wired variables here)
 		  }

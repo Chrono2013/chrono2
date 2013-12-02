@@ -3,7 +3,7 @@
      <groupbox width="98%" id="groupVoiturePrincipale"  >
                 <caption>
                     
-                    Voiture principale
+                    Voiture principale : <label value="@bind(vmSession.voiturePrincipale.id)" ></label>
                 </caption>
                 
                 <button id="top" Label="TOP"></button>
