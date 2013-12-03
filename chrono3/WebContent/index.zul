@@ -7,9 +7,14 @@
 <div apply="Ctl.MenuCtlMVC, Ctl.SelectionTopCtlMVC" height="100%">
    <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vmSession') @init('Ctl.GererSessionCtlMVVM')"   style="overflow:auto;" height="100%">
+	        
+	          
 <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vmEvenements') @init('Ctl.GererEvenementCtlMVVM')" height="100%">
       
+      
+      <div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vmSelection') @init('Ctl.GererSelectionCtlMVVM')" height="100%"  style="overflow:auto;" >
 	        
 <borderlayout  id="tt" width="100%" height="100%" >
 			<north size="130px">
@@ -38,7 +43,7 @@
     	<caption label="Gerer evenements ,courses, voitures, pilotes" />
                   	<include src="gerer.zul" />
 	</window>
-	</div></div></div>
+	</div></div></div></div>   
 </window>
     
     

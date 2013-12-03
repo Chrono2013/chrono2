@@ -1,8 +1,55 @@
 
   <div  hflex="1" >
-     <groupbox width="98%" id="groupVoiturePrincipale"  >
+  
+  
+  
+   <listbox id="eventBox" model="@bind(vmSession.sessionChronometrages)"  onSelect="@global-command('setSessionSelected', session=self.selectedItem.value)"		width="100%" rows="4"  checkmark="true" multiple="false">
+           <listhead sizable="true" >
+         <listheader width="30px"  align="center" />
+         <listheader   align="center" />
+        </listhead>
+         <template name="model">
+                <listitem>
+                  <listcell />
+                    <listcell  ><div ><groupbox width="98%"   >
                 <caption>
-                    <label value="@bind(vmSession.a )"></label>
+                  
+                    Voiture : <label value="@bind(each.voiture.id)" />
+                </caption>
+                
+                <button Label="TOP" onClick="@global-command('setTop', session2=each)"></button>
+                <label value="Temps au top :" />
+                <button Label="TOP IN Stand"></button>
+                 <label value="Chrono moyen :" />
+                </groupbox></div>
+                </listcell>
+		           
+                </listitem>
+                
+            </template>
+           <listfoot >
+               <listfooter  /> 
+                <listfooter  >   ajouter Concurrents : 
+                <combobox model="@bind(vmSelection.voitures)" onChange="btnConcurent2.setDisabled(false)"	width="150px"  readonly="true"	id="cmbVoitureConcurrents" >
+			<template name="model" var="p9">
+				<comboitem label="@bind(p9.id)"
+					value="@bind(p9)" />
+			</template>
+		</combobox>
+                
+                
+                
+               
+                    <button id="btnConcurent2" Label="+" onClick="@global-command('addSession', voiture=cmbVoitureConcurrents.selectedItem.value)" disabled="true" ></button>
+               </listfooter>
+            </listfoot>
+    </listbox>
+  
+  
+  
+     <groupbox width="98%" id="groupVoiturePrincipale2"  >
+                <caption>
+                  
                     Voiture principale : <label value="@bind(vmSession.voiturePrincipale.id)" ></label>
                 </caption>
                 

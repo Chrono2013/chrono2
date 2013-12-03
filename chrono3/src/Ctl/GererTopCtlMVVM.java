@@ -22,8 +22,10 @@ import BO.Voiture;
 public class GererTopCtlMVVM {
 	public ArrayList<Top> tops = new ArrayList<Top>();
 
+	public SessionChronometrage session=new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()));
+
 	public  GererTopCtlMVVM(){
-		this.tops.add(new Top(new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()))));
+		//this.tops.add(new Top(new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()))));
 	}
 	
 	public ArrayList<Top> getTops() {
@@ -33,12 +35,21 @@ public class GererTopCtlMVVM {
 	public void setTops(ArrayList<Top> tops) {
 		this.tops = tops;
 	}
-	
+	/*
 	 @GlobalCommand
 	    @NotifyChange("tops")
 	    public void addTop() {
-		 System.out.println("sdffsd");
-	        tops.add(new Top(new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()))));
+		 System.out.println("adtop");
+	        tops.add(new Top(session));
+	    }
+	 */
+	 
+	 @GlobalCommand
+	    @NotifyChange("tops")
+	    public void setTop(@BindingParam("session2") SessionChronometrage session2) {
+		 System.out.println("adtop");
+		 session2.getTops().add(new Top(session2));
+	        //tops.add();
 	    }
 	 
 	 @GlobalCommand
@@ -48,7 +59,12 @@ public class GererTopCtlMVVM {
 			tops.remove(myTop);
 		}
 	   
-	 
+	 @GlobalCommand
+	    @NotifyChange({"session","tops"})
+	    public void setSessionSelected(@BindingParam("session") SessionChronometrage session) {
+		 this.session=session;
+		 tops =session.getTops();
+	}
 	
 	/*
 	 @GlobalCommand

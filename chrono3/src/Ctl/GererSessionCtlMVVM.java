@@ -3,55 +3,61 @@ package Ctl;
 import java.util.ArrayList;
 
 import org.zkoss.bind.BindUtils;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zul.ListModelList;
 
 import BO.Course;
+import BO.EvenementSportif;
 import BO.SessionChronometrage;
 import BO.Voiture;
 
 public class GererSessionCtlMVVM {
 	private ArrayList<SessionChronometrage> sessionChronometrages = new ArrayList<SessionChronometrage>();
+	
 	private Course course;
 	private Voiture voiturePrincipale ;// = course.getVoiturePrincipale();
 	private SessionChronometrage sessionChronometragePrincipale =new SessionChronometrage(course, voiturePrincipale);
-	private Voiture voiture1;
-	private Voiture voiture2;
-	private Voiture voiture3;
-	private Voiture voiture4;
-	private boolean buttonDisabled=true;
-	private String a="dddd";
+
+	//private boolean buttonDisabled=true;
+
 	
 	
-	public boolean isButtonDisabled() {
-		return buttonDisabled;
+
+	@GlobalCommand
+	@NotifyChange("sessionChronometrages")
+	public void addSession(@BindingParam("voiture") Voiture voiture){
+		sessionChronometrages.add(new SessionChronometrage(course, voiture));
+	}
+	
+	public GererSessionCtlMVVM(){
+	//	sessionChronometragePrincipale =new SessionChronometrage(course, voiturePrincipale);
+	//	sessionChronometrages.add(sessionChronometragePrincipale);
+	}
+
+	public ArrayList<SessionChronometrage> getSessionChronometrages() {
+		return sessionChronometrages;
 	}
 
 
-	public void setButtonDisabled(boolean buttonDisabled) {
-		this.buttonDisabled = buttonDisabled;
+	public void setSessionChronometrages(
+			ArrayList<SessionChronometrage> sessionChronometrages) {
+		this.sessionChronometrages = sessionChronometrages;
 	}
+	
 
-	
-	@NotifyChange("a")
-	public void initSession2(){
-		a="jkhjkhjkhjkh";
-		System.out.println("ljl");
-		 BindUtils.postNotifyChange(null,null,a,"value1");
-	}
-	
 	
 	//@Command
-	@NotifyChange({"sessionChronometragePrincipale","voiturePrincipale","a"})
+	//@NotifyChange({"sessionChronometragePrincipale","voiturePrincipale"})
+	@NotifyChange("sessionChronometrages")
 	public void initSession(){
 		//sessionChronometragePrincipale =new SessionChronometrage(course, voiture);
 		//voiturePrincipale = voiture;
 		if(course != null){
 			if(voiturePrincipale != null){
-				buttonDisabled=false;
-				setA("bbbbbbb");
-				//System.out.println(buttonDisabled);
-				//System.out.println("lalal");
+
 				this.sessionChronometragePrincipale =null;
 				for(SessionChronometrage sessionChrono : sessionChronometrages){
 					if(sessionChrono.getCourse() == course &&  sessionChrono.getVoiture() == voiturePrincipale ){
@@ -66,11 +72,9 @@ public class GererSessionCtlMVVM {
 				}
 				*/
 				}
+				sessionChronometrages.add(new SessionChronometrage(course, voiturePrincipale));
 			}
 		}
-		
-		
-		
 	}
 	
 	
@@ -91,56 +95,22 @@ public class GererSessionCtlMVVM {
 	public Course getCourse() {
 		return course;
 	}
+	//@NotifyChange("sessionChronometrages")
+	
+	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale"})
 	public void setCourse(Course course) {
 		this.course = course;
-	initSession();
+		initSession();
 	}
 	public Voiture getVoiturePrincipale() {
 		return voiturePrincipale;
 	}
+	
+	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale"})
 	public void setVoiturePrincipale(Voiture voiturePrincipale) {
 		this.voiturePrincipale = voiturePrincipale;
-	initSession2();
-	initSession();
-	}
-	public Voiture getVoiture1() {
-		return voiture1;
-	}
-	public void setVoiture1(Voiture voiture1) {
-		this.voiture1 = voiture1;
-	}
-	public Voiture getVoiture2() {
-		return voiture2;
-	}
-	public void setVoiture2(Voiture voiture2) {
-		this.voiture2 = voiture2;
-	}
-	public Voiture getVoiture3() {
-		return voiture3;
-	}
-	public void setVoiture3(Voiture voiture3) {
-		this.voiture3 = voiture3;
-	}
-	public Voiture getVoiture4() {
-		return voiture4;
-	}
-	public void setVoiture4(Voiture voiture4) {
-		this.voiture4 = voiture4;
-	}
+		initSession();
 
-
-	public String getA() {
-		System.out.println("geta");
-		return a;
 	}
-
-
-	public void setA(String a) {
-		this.a = a;
-	}
-
-	
-	
-	
 	
 }
