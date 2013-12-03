@@ -1,6 +1,6 @@
 package Ctl;
 
-import java.awt.Component;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,37 +27,6 @@ public class GererTopCtlMVVM {
 	public ArrayList<EtatTop> etatTops =new ArrayList<EtatTop>(Arrays.asList(EtatTop.values()));
 	public SessionChronometrage session=new SessionChronometrage(new Course(new EvenementSportif()), new Voiture(new EvenementSportif()));
 
-	public Voiture voit;
-	
-	
-	@NotifyChange("voit")
-	 @GlobalCommand
-		public void setTime(){
-			
-			//if(session= 1){
-				System.out.println("lilililililil");
-				
-				voit =session.getVoiture();
-			voit.setTpsEstimeTour(voit.getTpsEstimeTour()+10);;
-			// BindUtils.postNotifyChange(null,null,sessionChronometrages.get(0).getVoiture().getTpsEstimeTour(),"value1");
-			//}
-		//	long tp = sessionChronometrages.get(1).getVoiture().getTpsEstimeTour();
-			//tp
-		}
-	
-	
-	
-		
-	public Voiture getVoit() {
-		return voit;
-	}
-
-
-
-
-	public void setVoit(Voiture voit) {
-		this.voit = voit;
-	}
 
 
 
@@ -78,8 +47,8 @@ public class GererTopCtlMVVM {
 	
 	 @GlobalCommand
 	    @NotifyChange("tops")
-	    public void setTop(@BindingParam("session2") SessionChronometrage session2, @BindingParam("comp") Component compo) {
-		 System.out.println(compo);
+	    public void setTop(@BindingParam("session2") SessionChronometrage session2) {
+		// System.out.println(compo);
 		 session2.getTops().add(new Top(session2));
 	    }
 	 

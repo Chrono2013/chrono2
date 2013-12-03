@@ -17,15 +17,16 @@
                     Voiture : <label value="@bind(each.voiture.id)" />
                 </caption>
                 
-                <button Label="TOP" onClick="@global-command('setTop', session2=each, compo=self)"></button>
+                <button Label="TOP" onClick="@global-command('setTop', session2=each)"></button>
                 <label value="Temps au top :" />
                 <button Label="TOP IN Stand"></button>
                 
                  <label  value="Chrono moyen :" />
                 
                <div apply="org.zkoss.bind.BindComposer"
-	        viewModel="@id('vmSessionpp') @init('Ctl.GererTopCtlMVVM')"   style="overflow:auto;" height="100%">
-	        	<timer delay="2000" repeats="true" onTimer="@global-command('setTime')" /> 
+	        viewModel="@id('vmSessionpp') @init('Ctl.GererBarreAvanceCtlMMVM')"   style="overflow:auto;" height="100%">
+	        	<timer delay="1000" repeats="true" onTimer="@command('setTime')" />
+	        	 
                   <progressmeter    value="@bind(vmSessionpp.voit.tpsEstimeTour)" width="300px" />
                   </div>
                 </groupbox></div>
