@@ -21,10 +21,11 @@ public class GererSessionCtlMVVM {
 	private Voiture voiturePrincipale ;// = course.getVoiturePrincipale();
 	private SessionChronometrage sessionChronometragePrincipale =new SessionChronometrage(course, voiturePrincipale);
 
-	//private boolean buttonDisabled=true;
+	
 
 	
-	
+
+
 
 	@GlobalCommand
 	@NotifyChange("sessionChronometrages")

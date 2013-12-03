@@ -21,6 +21,8 @@
                 </caption>
                 	<textbox rows="3" value="" width="80%" />
                 </groupbox>
+    
+  
       
       <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vm') @init('Ctl.GererTopCtlMVVM')">
@@ -30,7 +32,7 @@
 		                <column width="120px" label="Voiture" align="center"></column>
 		                <column width="120px" label="Pilote" align="center" ></column>
 		                <column width="120px" label="Tps de passage" align="center" ></column>
-		                <column width="120px" label="Etat Top" align="center" ></column>
+		                <column width="190px" label="Etat Top" align="center" ></column>
 		                <column width="120px" label="Heure Top" align="center" ></column>
 		                <column width="120px" label="Commentaire" align="center" ></column>
 		                <column width="120px" label="Supprimer" align="center" ></column>					  
@@ -46,10 +48,18 @@
 		                        value="@bind(each.piloteActuel)" width="99%" />
 		                        <textbox inplace="true"
 		                        value="@bind(each.heurePassage)" width="99%" />
-		                        <textbox inplace="true"
-		                        value="@bind(each.etatTop)" width="99%" />
-		                         <textbox inplace="true"
-		                        value="@bind(each.heureMs)" width="99%" />
+		                        
+		                        <combobox selectedItem="@bind(each.etatTop)" 
+            model="@bind(vm.etatTops)"  readonly="true">
+            <template name="model" var="p12">
+				<comboitem label="@bind(p12)"
+					value="@bind(p2)" />
+			</template>
+           
+        </combobox>
+		                        
+		                        <timebox format="medium" value="@bind(each.heureMs)" />
+		                        
 		                        <textbox inplace="true"
 		                        value="@bind(each.commentaire)" width="99%" />
 		                    <button label="X" onClick="@global-command('deleteTop', top=each)" />

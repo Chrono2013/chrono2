@@ -1,9 +1,9 @@
 
-  <div  hflex="1" >
+  <div  hflex="1"  >
   
   
   
-   <listbox id="eventBox" model="@bind(vmSession.sessionChronometrages)"  onSelect="@global-command('setSessionSelected', session=self.selectedItem.value)"		width="100%" rows="4"  checkmark="true" multiple="false">
+   <listbox id="sessionBox" model="@bind(vmSession.sessionChronometrages)"  onSelect="@global-command('setSessionSelected', session=self.selectedItem.value)"		width="100%" rows="4"  checkmark="true" multiple="false">
            <listhead sizable="true" >
          <listheader width="30px"  align="center" />
          <listheader   align="center" />
@@ -17,10 +17,17 @@
                     Voiture : <label value="@bind(each.voiture.id)" />
                 </caption>
                 
-                <button Label="TOP" onClick="@global-command('setTop', session2=each)"></button>
+                <button Label="TOP" onClick="@global-command('setTop', session2=each, compo=self)"></button>
                 <label value="Temps au top :" />
                 <button Label="TOP IN Stand"></button>
-                 <label value="Chrono moyen :" />
+                
+                 <label  value="Chrono moyen :" />
+                
+               <div apply="org.zkoss.bind.BindComposer"
+	        viewModel="@id('vmSessionpp') @init('Ctl.GererTopCtlMVVM')"   style="overflow:auto;" height="100%">
+	        	<timer delay="2000" repeats="true" onTimer="@global-command('setTime')" /> 
+                  <progressmeter    value="@bind(vmSessionpp.voit.tpsEstimeTour)" width="300px" />
+                  </div>
                 </groupbox></div>
                 </listcell>
 		           
@@ -36,96 +43,19 @@
 					value="@bind(p9)" />
 			</template>
 		</combobox>
-                
-                
-                
                
                     <button id="btnConcurent2" Label="+" onClick="@global-command('addSession', voiture=cmbVoitureConcurrents.selectedItem.value)" disabled="true" ></button>
                </listfooter>
             </listfoot>
     </listbox>
+ <button Label="test" id="btntestt"></button>  
   
   
   
-     <groupbox width="98%" id="groupVoiturePrincipale2"  >
-                <caption>
-                  
-                    Voiture principale : <label value="@bind(vmSession.voiturePrincipale.id)" ></label>
-                </caption>
-                
-                <button id="top" Label="TOP"></button>
-                <label value="Temps au top :" />
-                <button id="topin" Label="TOP IN Stand"></button>
-                 <label value="Chrono moyen :" />
-                </groupbox>
-                
-                <div  height="30px"  />
-                
-             <div apply="Ctl.VoitureConcurrentCtlMVC">   
-                
-                  <groupbox width="98%" id="groupConcurrents"  >
-                <caption>
-                   Concurrents 
-                </caption>
-                
-                
-               ajouter Concurrents : <combobox id="cmbVoitureConcurrent" width="150px"  readonly="true" ></combobox>
-               
-                    <button id="btnConcurent" Label="+"></button>
-               
-               <div  height="20px"  />
-                
-                  <groupbox width="95%" id="groupVoitureC1" visible="false"  >
-                <caption>
-                   Voiture 1
-                </caption>
-                
-                <button id="topC1" Label="TOP"></button>
-                <label value="Temps au top :" />
-                <button id="topinC1" Label="TOP IN Stand" onClick="timerC1.start()"></button>
-                 <label value="Chrono moyen :" />
-                  <progressmeter id="pmC1" value="0" width="300px" />
-                </groupbox>
-                
-                   <groupbox width="100%" id="groupVoitureC2"  visible="false" >
-                <caption>
-                   Voiture 2
-                </caption>
-                
-                 <button id="topC2" Label="TOP"></button>
-                <label value="Temps au top :" />
-                <button id="topinC2" Label="TOP IN Stand" onClick="timerC2.start()"></button>
-                 <label value="Chrono moyen :" />
-                  <progressmeter id="pmC2" value="0" width="300px" />
-                </groupbox>
-               
-                
-                   <groupbox width="100%" id="groupVoitureC3"  visible="false" >
-                <caption>
-                   Voiture 3
-                </caption>
-                
-                 <button id="topC3" Label="TOP"></button>
-                <label value="Temps au top :" />
-                <button id="topinC3" Label="TOP IN Stand" onClick="timerC3.start()"></button>
-                 <label value="Chrono moyen :" />
-                  <progressmeter id="pmC3" value="0" width="300px" />
-                </groupbox>
-                
-                
-                   <groupbox width="100%" id="groupVoitureC4"  visible="false" >
-                <caption>
-                   Voiture 4
-                </caption>
-                
-                 <button id="topC4" Label="TOP"></button>
-                <label value="Temps au top :" />
-                <button id="topinC4" Label="TOP IN Stand" onClick="timerC4.start()"></button>
-                 <label value="Chrono moyen :" />
-                  <progressmeter id="pmC4" value="0" width="300px" />
-                </groupbox>
-                 </groupbox>
-                </div>
+ 
+  
+           
+         
 
 </div>
 

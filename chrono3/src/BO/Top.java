@@ -8,7 +8,7 @@ public class Top {
 	private int nbTourTotalEffect=0;
 	private String tempsCourant;
 	private String heurePassage;
-	private Date heureMs;
+	private Date heureMs =new Date();
 	private String commentaire;
 	private SessionChronometrage sessionChronometrage;
 	private Pilote piloteActuel;
@@ -16,6 +16,7 @@ public class Top {
 	
 	public Top(SessionChronometrage sessionChronometrage){
 		this.sessionChronometrage=sessionChronometrage;
+		
 	}
 	/*
 	public int getNumeroVoiture() {

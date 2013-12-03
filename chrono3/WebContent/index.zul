@@ -5,6 +5,8 @@
 
 <window  height="100%" width="100%" >
 <div apply="Ctl.MenuCtlMVC, Ctl.SelectionTopCtlMVC" height="100%">
+
+
    <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vmSession') @init('Ctl.GererSessionCtlMVVM')"   style="overflow:auto;" height="100%">
 	        

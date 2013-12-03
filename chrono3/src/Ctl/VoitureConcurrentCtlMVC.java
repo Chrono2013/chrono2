@@ -1,20 +1,27 @@
 package Ctl;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Groupbox;
+import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Progressmeter;
 
 
 
-public class VoitureConcurrentCtlMVC extends SelectorComposer<Component>{
+public class VoitureConcurrentCtlMVC extends GenericForwardComposer{
 	
-	public final int nbConcurrentMax=4;
-	public  int nbConcurrentActuel=0;
+
 	
-	
+	@Wire
+	Progressmeter pm;
+	@Wire
+	Listbox sessionBox;
+	/*
 	@Wire
 	Button btnConcurent;
 	@Wire
@@ -25,43 +32,26 @@ public class VoitureConcurrentCtlMVC extends SelectorComposer<Component>{
 	Groupbox groupVoitureC3;
 	@Wire
 	Groupbox groupVoitureC4;
+	*/
 	
+	 public void doAfterCompose(Component comp) throws Exception {
+		    super.doAfterCompose(comp);
+		    System.out.println("ljkljkljaaaaaaaa");
+		    pm.setValue(10);
+		//    sessionBox.
+		  }
+	/*
+	 public void onTimer$timer(Event e){
+		    //inboxGrid.setModel(new ListModelList(getUpdatedData()));
+		 System.out.println("lkjkljklj");
+		 pm.setValue(pm.getValue()+10);
+	 }
 	
-	public void doAfterCompose(Component comp) {
-		 
-		try {
-		super.doAfterCompose(comp);
-		} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		}
-		
-  }
-	
-	
+	*/
 	@Listen("onClick = #btnConcurent")
 public void ajouteConcurrent(){
 //gererWindow.setVisible(true);
-		System.out.println("conn");
-		nbConcurrentActuel++;
-		if(nbConcurrentActuel==nbConcurrentMax){
-			btnConcurent.setVisible(false);
-		}
-		if(nbConcurrentActuel==1){
-			groupVoitureC1.setVisible(true);
-		}
-		if(nbConcurrentActuel==2){
-			groupVoitureC2.setVisible(true);
-		}
-		if(nbConcurrentActuel==3){
-			groupVoitureC3.setVisible(true);
-		}
-		if(nbConcurrentActuel==4){
-			groupVoitureC4.setVisible(true);
-		}
-		
- 
-
+	
  
    }
 }

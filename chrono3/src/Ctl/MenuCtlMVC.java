@@ -32,5 +32,8 @@ Window gererWindow;
 	public void afficheGerer(){
 		gererWindow.setVisible(true);
    }
+	
+	
+	
  
 }

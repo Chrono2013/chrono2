@@ -61,11 +61,10 @@ public class GererGererCtlMVVM {
 	
 	@GlobalCommand
     @NotifyChange("voitures")
-    public void deleteVoiture(@BindingParam("course") Voiture myVoiture) {
+    public void deleteVoiture(@BindingParam("voiture") Voiture myVoiture) {
 		voitures.remove(myVoiture);
 	}
-	
-	
+			
 	@GlobalCommand
     @NotifyChange("courses")
     public void addCourse() {
