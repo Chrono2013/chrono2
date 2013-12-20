@@ -20,12 +20,31 @@ public class GererSessionCtlMVVM {
 	private Course course;
 	private Voiture voiturePrincipale ;// = course.getVoiturePrincipale();
 	private SessionChronometrage sessionChronometragePrincipale =new SessionChronometrage(course, voiturePrincipale);
-
+	private boolean finisOrNotCreated=true ;
+	private boolean courseEnCour=false ;
+	
+private int pickedIndex;
 	
 
+
+
 	
+	public int getPickedIndex() {
+	return pickedIndex;
+}
 
+public void setPickedIndex(int pickedIndex) {
+	this.pickedIndex = pickedIndex;
+}
 
+	public boolean isFinisOrNotCreated() {
+		System.out.println("kljklj");
+		return finisOrNotCreated;
+	}
+
+	public void setFinisOrNotCreated(boolean isFinisOrNotCreated) {
+		this.finisOrNotCreated = isFinisOrNotCreated;
+	}
 
 	@GlobalCommand
 	@NotifyChange("sessionChronometrages")
@@ -49,10 +68,28 @@ public class GererSessionCtlMVVM {
 	}
 	
 
+	@GlobalCommand
+	@NotifyChange({"sessionChronometragePrincipale","sessionChronometrages","finisOrNotCreated"})
+	public void startSession(){
+		if(!courseEnCour){
+			System.out.println("ll");
+			courseEnCour=true;
+			sessionChronometragePrincipale=new SessionChronometrage(course, voiturePrincipale);
+			sessionChronometrages.add(sessionChronometragePrincipale);
+		}else{
+			System.out.println("22");
+			courseEnCour=false;
+			finisOrNotCreated=true;
+			sessionChronometragePrincipale.setFinished(true);
+		}
+		
+		
+		
+	} 
 	
 	//@Command
 	//@NotifyChange({"sessionChronometragePrincipale","voiturePrincipale"})
-	@NotifyChange("sessionChronometrages")
+	@NotifyChange({"sessionChronometrages","finisOrNotCreated"})
 	public void initSession(){
 		//sessionChronometragePrincipale =new SessionChronometrage(course, voiture);
 		//voiturePrincipale = voiture;
@@ -65,7 +102,8 @@ public class GererSessionCtlMVVM {
 						// une session existe afficher
 						System.out.println("laaa");
 						sessionChronometragePrincipale = sessionChrono;
-						
+						finisOrNotCreated = sessionChronometragePrincipale.isFinished();
+						System.out.println("ici"+finisOrNotCreated);
 					}
 					/*
 				if(sessionChronometragePrincipale == null){
@@ -73,7 +111,12 @@ public class GererSessionCtlMVVM {
 				}
 				*/
 				}
-				sessionChronometrages.add(new SessionChronometrage(course, voiturePrincipale));
+				if(this.sessionChronometragePrincipale == null){
+					finisOrNotCreated = false;
+					System.out.println("ici"+finisOrNotCreated);
+					
+				}
+				//sessionChronometrages.add(new SessionChronometrage(course, voiturePrincipale));
 			}
 		}
 	}
@@ -98,7 +141,7 @@ public class GererSessionCtlMVVM {
 	}
 	//@NotifyChange("sessionChronometrages")
 	
-	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale"})
+	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale","finisOrNotCreated"})
 	public void setCourse(Course course) {
 		this.course = course;
 		initSession();
@@ -107,7 +150,7 @@ public class GererSessionCtlMVVM {
 		return voiturePrincipale;
 	}
 	
-	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale"})
+	@NotifyChange({"sessionChronometrages","sessionChronometragePrincipale","voiturePrincipale","finisOrNotCreated"})
 	public void setVoiturePrincipale(Voiture voiturePrincipale) {
 		this.voiturePrincipale = voiturePrincipale;
 		initSession();

@@ -42,15 +42,18 @@
 		                <row>
 		                    <textbox inplace="true"
 		                        value="@bind(each.nbTourTotalEffect)" width="99%" />
-		                    <textbox inplace="true"
-		                        value="@bind(each.sessionChronometrage.voiture.id)" width="99%" />
+		                    <combobox inplace="true"
+		                        value="@bind(each.sessionChronometrage.voiture.id)" model="@bind(vmSelection.voitures)" width="99%"> 
+		                        <template name="model" var="pp2">
+				<comboitem label="@bind(pp2.id)"
+					value="@bind(pp2)" />
+			</template></combobox>
 							<textbox inplace="true"
 		                        value="@bind(each.piloteActuel)" width="99%" />
 		                        <textbox inplace="true"
 		                        value="@bind(each.heurePassage)" width="99%" />
 		                        
-		                        <combobox selectedItem="@bind(each.etatTop)" 
-            model="@bind(vm.etatTops)"  readonly="true">
+		                        <combobox selectedItem="@bind(each.etatTop)" model="@bind(vm.etatTops)"  readonly="true">
             <template name="model" var="p12">
 				<comboitem label="@bind(p12)"
 					value="@bind(p2)" />
