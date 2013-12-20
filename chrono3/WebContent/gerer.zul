@@ -46,7 +46,7 @@
         <listhead sizable="true" >
     
             <listheader width="110px" label="Nom du course" align="center" />
-            <listheader width="90px" label="Type" align="center"  />
+            <listheader width="110px" label="Type" align="center"  />
             <listheader width="120px" label="H début" align="center"  />
 			<listheader  width="120px" label="H fin" align="center"  />
 			<listheader  width="80px" label="Depart auto" align="center" />
@@ -59,14 +59,17 @@
         </listhead>
          <template name="model">
                 <listitem>
-              
-		            <listcell><textbox inplace="true"  value="@bind(each.nomCourse)" width="99%" /></listcell>
-		            <listcell><textbox inplace="true" width="99%" /></listcell>
-		            <listcell><datebox format="KK:mm:ss" width="100px" value="@bind(each.hDebut)"/></listcell>
-		            <listcell><datebox format="KK:mm:ss" width="100px" value="@bind(each.hFin)"/></listcell>
+                    <listcell><textbox inplace="true"  value="@bind(each.nomCourse)" width="99%" /></listcell>
+					<listcell>
+		            	<combobox width="80px" selectedItem="@bind(each.typeCourse)" model="@bind(vmGerer.typeCourse)" readonly="true">
+		            		<template name="model" var="tc"><comboitem label="@bind(tc)"	value="@bind(tc)" /></template>
+		            	</combobox>
+		            </listcell>
+		            <listcell><datebox format="HH:mm:ss" width="100px" value="@bind(each.hDebut)"/></listcell>
+		            <listcell><datebox format="HH:mm:ss" width="100px" value="@bind(each.hFin)"/></listcell>
 		            <listcell><textbox inplace="true" width="99%" /></listcell>
 		            <listcell><textbox inplace="true"  value="@bind(each.typeFin)" width="99%" /></listcell>
-		   
+		   				
 		            <listcell><timebox format="medium" value="@bind(each.dureeTotaleMaxPilote)" /></listcell>
 		            <listcell><textbox inplace="true" value="@bind(each.commentaire)" width="99%" /></listcell>
 		            <listcell><button label="X" onClick="@global-command('deleteCourse', course=each)"/></listcell>
@@ -87,7 +90,7 @@
                 </caption>
 
 
-     <listbox id="voitureBox" model="@bind(vmGerer.voitures)"  rows="4" 	 >
+     <listbox id="voitureBox" model="@bind(vmGerer.voitures)"  rows="4" 	onSelect="@command('setVoitureSelectedV', voiturev=self.selectedItem.value)" >
         <listhead sizable="true" >
     
             <listheader width="110px" label="ID" align="center" />
@@ -120,6 +123,32 @@
 	
 	</groupbox>
 	
+	<groupbox> 
+		<caption>
+                    
+         Gerer Pilotes
+        </caption>
+        
+        <listbox id="piloteBox" model="@bind(vmGerer.selectedVoiture.piloteDisponibles)"  	 >
+        <listhead sizable="true" >
+    
+            <listheader width="110px" label="Nom" align="center" />
+            <listheader width="120px" label="Couleur du casque" align="center"  />
+            <listheader  width="70px" label="Delete" align="center"  />
+		</listhead>
+         <template name="model">
+                <listitem>
+		            <listcell> <textbox inplace="true"  value="@bind(each.nomPrenom)" width="99%" /></listcell>
+		            <listcell><colorbox value="@bind(each.couleurCasque)" width="100px" /></listcell>
+		            <listcell><button label="X" onClick="@global-command('deletePilote', pilote=each)"/></listcell>
+                </listitem>
+            </template>
+    </listbox>
+    
+    <space />
+		  <button id="addPilote" label="Ajouter un nouveau pilote"  onClick="@global-command('addPilote')" disabled="@bind(vmGerer.selectedVoiture eq null)" />
+	
+	</groupbox>
 	
 	
 	

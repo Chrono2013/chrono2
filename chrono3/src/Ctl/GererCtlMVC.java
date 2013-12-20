@@ -18,6 +18,7 @@ public class GererCtlMVC extends SelectorComposer<Component>{
  
         BindUtils.postGlobalCommand(null, null, "addEvent", null);
     }
+	
 	/*
 	@Listen("onClick = #addCourse")
     public void addCourse() {
