@@ -3,7 +3,8 @@ package BO;
 import java.util.ArrayList;
 
 public class SessionChronometrage {
-	private boolean isFinished;
+	private boolean finished=false;
+
 	private Course course;
 	private Voiture voiture;
 	private ArrayList<Top> tops = new ArrayList<Top>();
@@ -13,12 +14,15 @@ public class SessionChronometrage {
 		this.course=course;
 	}
 	
-	private boolean isFinished() {
-		return isFinished;
+	
+	public boolean isFinished() {
+		return finished;
 	}
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
+	
 	public Course getCourse() {
 		return course;
 	}

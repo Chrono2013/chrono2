@@ -76,4 +76,7 @@ public class GererSelectionCtlMVVM {
     public void deleteCourse(@BindingParam("course") Course myCourse) {
 	}
 	
+	
+	
+	
 }

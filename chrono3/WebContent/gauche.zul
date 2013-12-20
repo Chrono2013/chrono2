@@ -1,6 +1,23 @@
 
   <div  hflex="1"  >
   
+              
+ 
+  
+  
+  <zscript>
+
+void selectOne() {
+	if(!sessionBox.getItems().isEmpty()){
+		sessionBox.setSelectedIndex(0);
+	
+	}
+		
+}
+
+
+</zscript>
+  
   
   
    <listbox id="sessionBox" model="@bind(vmSession.sessionChronometrages)"  onSelect="@global-command('setSessionSelected', session=self.selectedItem.value)"		width="100%" rows="4"  checkmark="true" multiple="false">
@@ -25,7 +42,7 @@
                 
                <div apply="org.zkoss.bind.BindComposer"
 	        viewModel="@id('vmSessionpp') @init('Ctl.GererBarreAvanceCtlMMVM')"   style="overflow:auto;" height="100%">
-	        	<timer delay="1000" repeats="true" onTimer="@command('setTime')" />
+	        
 	        	 
                   <progressmeter    value="@bind(vmSessionpp.voit.tpsEstimeTour)" width="300px" />
                   </div>

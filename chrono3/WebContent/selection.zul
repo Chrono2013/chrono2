@@ -38,31 +38,88 @@
                 </combobox>
                 
          
-                <button label="Départ Course" id="btnDepartCourse" disabled="@bind(vmSession.sessionChronometragePrincipale ne null)" onClick="restart()" />
-            <label id="now" sclass="time" />
+              
+          
+            
+            <script><![CDATA[
+var startTime = 0
+var start = 0
+var end = 0
+var diff = 0
+var timerID = 0
+
+
+function chrono(){
+	end = new Date()
+	diff = end - start
+	diff = new Date(diff)
+	var msec = diff.getMilliseconds()
+	var sec = diff.getSeconds()
+	var min = diff.getMinutes()
+	var hr = diff.getHours()-1
+	if (min < 10){
+		min = '0' + min
+	}
+	if (sec < 10){
+		sec = '0' + sec
+	}
+	if(msec < 10){
+		msec = '00' +msec
+	}
+	else if(msec < 100){
+		msec = '0' +msec
+	}
+	zk.Widget.$(jq('$chronometre')).setValue(hr + ":" + min + ":" + sec + ":" + msec)
+	timerID = setTimeout("chrono()", 10)
+	
+
+}
+
+function chronoStart(){
+	zAu.send(new zk.Event(zk.Widget.$('$demarrer'), 'onTest', null), 10);
+	start = new Date()
+	chrono()
+}
+
+function chronoStop(){
+	zAu.send(new zk.Event(zk.Widget.$('$demarrer'), 'onTest', null), 10);
+	clearTimeout(timerID)
+	
+}
+
+]]></script>
+
+<zscript>
+int countNum =0;
+void startStop() {
+
+	if(demarrer.getLabel().equals("Demarrer")){
+		Clients.evalJavaScript("chronoStart()");
+		demarrer.setLabel("Stopper");
+		
+	}else{
+		Clients.evalJavaScript("chronoStop()");
+		demarrer.setLabel("Demarrer");
+	}
+}
+
+
+</zscript>
+
+<label id="chronometre"></label>
+<button id="demarrer" label="Demarrer" disabled="@bind(vmSession.finisOrNotCreated)"  onClick="startStop()" onTest="@global-command('startSession')" />
+            
+            
+            
                <label id="heure" sclass="time" />
                
               </hlayout>  
             </groupbox>
              
 
-<zscript>
-    long countNum = 0;
 
-   
-    void restart() {
-    
-        timer.start();
-    }
-</zscript>
          
-    <timer id="timer" delay="1" repeats="true" running="false" >
-        <attribute name="onTimer">
-        countNum++;
-    now.setValue("Temps écoulé ：" + String.valueOf(countNum));
-  
-</attribute>
-    </timer>
+    
      <timer id="timer2" delay="1000" repeats="true"  >
         <attribute name="onTimer">
         countNum++;
