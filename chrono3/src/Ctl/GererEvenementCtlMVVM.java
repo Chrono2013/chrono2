@@ -70,7 +70,7 @@ public class GererEvenementCtlMVVM {
 	        events.add(new EvenementSportif());
 	    }
 	
-	 @Command
+	 @GlobalCommand
 	    @NotifyChange("events")
 	    public void deleteEvent(@BindingParam("event") EvenementSportif myEvent) {
 	        events.remove(myEvent);
