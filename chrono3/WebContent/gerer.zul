@@ -25,7 +25,7 @@
                     <listcell ><textbox inplace="true" value="@bind(each.nom)" width="99%" /></listcell>
 		            <listcell > <textbox inplace="true" value="@bind(each.nomCircuit)" width="99%" /></listcell>
 		            <listcell > <intbox inplace="true" value="@bind(each.longueurCircuit)" width="99%" /></listcell>
-		            <listcell ><button label="X" onClick="@command('deleteEvent', event=each)" /></listcell>
+		            <listcell ><button label="X" onClick="@global-command('deleteEvent', event=each)" /></listcell>
                 </listitem>
             </template>
     </listbox>
